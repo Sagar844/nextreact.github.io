@@ -51,4 +51,4 @@ const pid = ({ data }: trandingprops) => {
 //     },
 //   };
 // };
-// export default pid;
+export default pid;
