@@ -1,13 +1,8 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import { GetServerSideProps, NextPage } from "next";
+import {  movies } from "@/types";
 
-import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { getmoviedetails } from "@/https/api";
-import { movieprops, movies } from "@/types";
-import { Route } from "react-router-dom";
 
 type trandingprops = {
   data: movies;
