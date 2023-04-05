@@ -13,11 +13,11 @@ const posturl = (posterpath: string) => {
 
 const ProdutsCart = ({ movies }: movieprops) => {
   return (
-    <div>
+    <div className="fonts">
       <Link href={"/tranding/" + movies.id}>
-        <Image
-          height={100}
-          width={100}
+        <Image className="imagesmovies"
+          height={260}
+          width={160}
           alt="ss"
           src={posturl(movies.poster_path)}
         ></Image>

@@ -10,7 +10,7 @@ const ProdutsPage = ({ movies }: Produstprops) => {
     
   return (
     <>
-      <div>
+      <div className="grids">
         {movies.map((m) => {
           return (
             <div key={m.id}>

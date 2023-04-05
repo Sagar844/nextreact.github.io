@@ -1,9 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import ProdutsPage from "./ProdutsPage";
-import { type } from "os";
 import { movies } from "@/types";
-import axios from "axios";
 import { GetServerSideProps } from "next";
 import { getmovies } from "@/https/api";
 
@@ -12,8 +10,6 @@ type homeprops = {
 };
 
 const Home = ({ data }: homeprops) => {
-
- 
   return (
     <>
       <Head>
@@ -35,4 +31,3 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return { props: { data } };
 };
 export default Home;
- 
