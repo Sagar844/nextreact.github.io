@@ -17,7 +17,7 @@ const ProdutsCart = ({ movies }: movieprops) => {
     <div>
       <Link href={'/tranding/'+ movies.id }>
         <h1>{movies.title}</h1>
-        {/* <Image height={20} width={20} alt="ss" src={posturl(movies.poster_path)}></Image> */}
+        <Image height={100} width={100} alt="ss" src={posturl(movies.poster_path)}></Image>
 
       </Link>
     </div>

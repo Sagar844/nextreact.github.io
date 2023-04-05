@@ -8,7 +8,6 @@ type Produstprops = {
 const ProdutsPage = ({ movies }: Produstprops) => {
   if(!movies) return <div>Loading...</div>
     
-
   return (
     <>
       <div>

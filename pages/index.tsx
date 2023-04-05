@@ -5,7 +5,7 @@ import { type } from "os";
 import { movies } from "@/types";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { getmovies, todaapi } from "@/https/api";
+import { getmovies } from "@/https/api";
 
 type homeprops = {
   data: movies;
@@ -32,7 +32,6 @@ const Home = ({ data }: homeprops) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await getmovies();
-
   return { props: { data } };
 };
 export default Home;

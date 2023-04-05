@@ -1,32 +1,39 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import {  movies } from "@/types";
+import { movies } from "@/types";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 type trandingprops = {
   data: movies;
 };
 
-const pid = ({ data }: trandingprops) => {
+const API = "?api_key=3ac20e37c3b1bdd32dadec03d228864f";
+const pid = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [data, setdata] = useState<movies>();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [loading, setloading] = useState(true);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
-  console.log(data)
-  // const [data, setdata] = useState<movies>();
+  const { pid } = router.query 
+  console.log(pid);
 
-  // const { pid } = router.query && router.query
-  // console.log(pid);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    axios
+      .get(" https://api.themoviedb.org/3/movie/" + pid + API)
+      .then((res) => {
+        setdata(res.data);
+        setloading(false);
+      });
+  }, [pid]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await getmoviedetails(pid);
-  //     setdata(res.data);
-  //   })();
-  // }, [pid]);
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <div>Loading</div>;
   }
 
   return (
@@ -35,12 +42,11 @@ const pid = ({ data }: trandingprops) => {
         <title> PAGE</title>
       </Head>
       <div className={styles.main}>
-        <h1 style={{ color: "red" }}> this is tranding </h1>
+        <h1 style={{ color: "red" }}> this is tranding{data?.title} </h1>
       </div>
     </>
   );
 };
-
 
 // export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 //   const { id } = params;
