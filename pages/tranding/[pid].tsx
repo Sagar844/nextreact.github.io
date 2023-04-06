@@ -2,13 +2,16 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
 import { movies } from "@/types";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toBase64, shimmer, posturl } from "@/components/ProdutsCart";
+import Image from "next/image";
 
-type trandingprops = {
-  data: movies;
-};
+// type trandingprops = {
+//   data: movies;
+// };
+
+
 
 const API = "?api_key=3ac20e37c3b1bdd32dadec03d228864f";
 const pid = () => {
@@ -43,6 +46,14 @@ const pid = () => {
       </Head>
       <div className={styles.main}>
         <h1 style={{ color: "red" }}> this is tranding{data?.title} </h1>
+        <Image className="imagesmovies"
+         height={260}
+          width={160}
+          alt="ss"
+          src={posturl(data.poster_path)}
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+        ></Image>
       </div>
     </>
   );
