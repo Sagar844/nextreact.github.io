@@ -42,7 +42,7 @@ const pid = () => {
   return (
     <>
       <Head>
-        <title> PAGE</title>
+        <title>{data?.title}</title>
       </Head>
       <div className={styles.main}>
         <h1 style={{ color: "red" }}> this is tranding{data?.title} </h1>
