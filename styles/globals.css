@@ -27,7 +27,7 @@ a {
 } */
 
 .navbar {
-  background-color: white;
+  background-color: rgb(23, 26, 37);
   padding: 10px;
   z-index: 10;
   position: fixed;
@@ -46,6 +46,8 @@ a {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  color: white;
+
 }
 .login-button {
   display: flex;
@@ -90,7 +92,7 @@ a {
 /* #Footer */
 .footer-basic {
   padding:40px 0;
-  background-color:#4951a0;
+  background-color:#05060e;
   color:#eeeeee;
   
 }

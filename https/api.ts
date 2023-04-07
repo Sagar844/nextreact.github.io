@@ -12,3 +12,7 @@ export const getmovies = async () => {
   return res.data.results;
 };
 
+export const getmovidesdetail = async (pid: number) => {
+  const res = await axios(`https://api.themoviedb.org/3/movie/ ${pid}` + API);
+  return res.data;
+};

@@ -20,6 +20,11 @@ const Navbar: NextPage = () => {
             ></Image>
           </Link>
 
+          <div>
+          <Link style={{color:'white'}} href='/CartPgae'>xcart</Link>
+
+          </div>
+
           <div className="login-button">
             <button className="loginclor">Login</button>
           </div>

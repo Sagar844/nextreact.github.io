@@ -5,6 +5,7 @@ import { movies } from "@/types";
 import { GetServerSideProps } from "next";
 import { getmovies } from "@/https/api";
 
+
 type homeprops = {
   data: movies;
 };

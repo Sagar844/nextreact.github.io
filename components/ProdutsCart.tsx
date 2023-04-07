@@ -2,6 +2,7 @@ import { movies } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Button from "./Button";
 
 type movieprops = {
   movies: movies;
@@ -10,7 +11,6 @@ type movieprops = {
 export const posturl = (posterpath: string) => {
   return `https://image.tmdb.org/t/p/original${posterpath}`;
 };
-
 
 export const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -24,27 +24,31 @@ export const shimmer = (w: number, h: number) => `
   <rect width="${w}" height="${h}" fill="#333" />
   <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`
+</svg>`;
 
 export const toBase64 = (str: string) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str)
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
 
 const ProdutsCart = ({ movies }: movieprops) => {
   return (
     <div className="fonts">
       <Link href={"/tranding/" + movies.id}>
-        <Image className="imagesmovies"
-         height={260}
+        <Image
+          className="imagesmovies"
+          height={260}
           width={160}
           alt="ss"
           src={posturl(movies.poster_path)}
           placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(700, 475)
+          )}`}
         ></Image>
         <h1>{movies.title}</h1>
       </Link>
+   
     </div>
   );
 };
