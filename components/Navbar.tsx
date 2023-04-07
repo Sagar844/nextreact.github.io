@@ -11,7 +11,7 @@ const Navbar: NextPage = () => {
 
       <div className="navbar">
         <div className="space-between">
-          <Link href="/">
+          <Link href="/" passHref>
             <Image
               width={40}
               height={40}
@@ -21,7 +21,7 @@ const Navbar: NextPage = () => {
           </Link>
 
           <div>
-          <Link style={{color:'white'}} href='/CartPgae'>xcart</Link>
+          <Link style={{color:'white'}} href='/CartPgae' passHref>xcart</Link>
 
           </div>
 
