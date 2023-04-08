@@ -1,16 +1,19 @@
 import { withcart } from "@/components/withprovider";
 import { movies } from "@/types";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { posturl } from "@/components/ProdutsCart";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
+import { NextPage } from "next";
 
 type cartprops = {
   cart: movies;
+  handleReamove:any
+
 };
 
-const CartPgae = ({ cart }: cartprops) => {
+const CartPgae:NextPage<cartprops> = ({ cart, handleReamove } ) => {
   return (
     <div>
       <Head>
@@ -29,6 +32,16 @@ const CartPgae = ({ cart }: cartprops) => {
                 alt="0"
               />
               )
+              <button
+                onClick={() => handleReamove(item.id)}
+                style={{
+                  backgroundColor: "red",
+                  padding: "10px",
+                  border: "none",
+                }}
+              >
+                remove movie
+              </button>
             </div>
           );
         })}

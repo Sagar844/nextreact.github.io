@@ -8,15 +8,17 @@ const CartProvider = ({ children }: any) => {
 
   console.log(cart);
 
-  const onaddtocart = (data: any) => {
+  const onaddtocart = (data: movies) => {
     setcart([ ...cart , data]);
   };
 
-  const updatecart = () => {};
+  const  handleReamove = (id:number) => {
+     setcart(prev => prev.filter((items) => items.id !== id))
+  };
 
   return (
     <div>
-      <CartContext.Provider value={{ cart, setcart, onaddtocart, updatecart }}>
+      <CartContext.Provider value={{ cart, setcart, onaddtocart,  handleReamove }}>
         {children}
       </CartContext.Provider>
     </div>

@@ -46,6 +46,7 @@ const pid = ({ onaddtocart, data }: any) => {
             padding: "4px",
             border: "none",
             color: "white",
+            cursor:'pointer'
           }}
         >
           + watchlist
