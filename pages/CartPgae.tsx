@@ -1,19 +1,19 @@
 import { withcart } from "@/components/withprovider";
 import { movies } from "@/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { posturl } from "@/components/ProdutsCart";
+import { posturl, shimmer, toBase64 } from "@/components/ProdutsCart";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import { NextPage } from "next";
 
+
 type cartprops = {
   cart: movies;
-  handleReamove:any
-
+  handleReamove: any;
 };
 
-const CartPgae:NextPage<cartprops> = ({ cart, handleReamove } ) => {
+const CartPgae: NextPage<cartprops> = ({ cart, handleReamove }) => {
   return (
     <div>
       <Head>
@@ -30,6 +30,10 @@ const CartPgae:NextPage<cartprops> = ({ cart, handleReamove } ) => {
                 height={200}
                 width={200}
                 alt="0"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
               />
               )
               <button
@@ -38,6 +42,7 @@ const CartPgae:NextPage<cartprops> = ({ cart, handleReamove } ) => {
                   backgroundColor: "red",
                   padding: "10px",
                   border: "none",
+                  cursor: "pointer",
                 }}
               >
                 remove movie

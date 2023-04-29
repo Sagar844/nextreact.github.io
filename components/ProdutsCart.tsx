@@ -42,7 +42,8 @@ const ProdutsCart = ({ movies }: movieprops) => {
           alt="ss"
           src={posturl(movies.poster_path)}
           placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+          blurDataURL={`data:image/svg+xml;
+          base64,${toBase64(
             shimmer(700, 475)
           )}`}
         ></Image>

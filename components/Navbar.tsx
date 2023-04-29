@@ -2,9 +2,12 @@ import { NextPage } from "next";
 // import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { BiSearchAlt } from "react-icons/bi";
+import SearchApi from "./SearchApi";
 
 const Navbar: NextPage = () => {
+  const [pop, setpop] = useState(false);
   return (
     <>
       {/* <Head></Head> */}
@@ -19,10 +22,16 @@ const Navbar: NextPage = () => {
               alt="logo"
             ></Image>
           </Link>
-
+          {pop && <SearchApi />}
           <div>
-          <Link style={{color:'white'}} href='/CartPgae' passHref>xcart</Link>
-
+            {/* <h1 onClick={() => setpop(!pop)} style={{ color: "white", cursor: "pointer" }}>
+              <BiSearchAlt />
+            </h1> */}
+          </div>
+          <div>
+            <Link style={{ color: "white" }} href="/CartPgae" passHref>
+              xcart
+            </Link>
           </div>
 
           <div className="login-button">

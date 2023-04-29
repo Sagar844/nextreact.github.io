@@ -9,14 +9,16 @@ import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  return (
-    <>
+
+
+   return (
+    <div style={{margin:'auto'}}>
         <CartProvider>
-        <NextNProgress />
+        <NextNProgress  />
         <Navbar />
         <Component {...pageProps} />
         <Footer />
         </CartProvider>
-    </>
+    </div>
   );
 }

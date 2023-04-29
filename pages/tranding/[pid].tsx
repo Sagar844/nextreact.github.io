@@ -1,17 +1,21 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import { movies } from "@/types";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { toBase64, shimmer, posturl } from "@/components/ProdutsCart";
 import Image from "next/image";
 import { withcart } from "@/components/withprovider";
 import { getmovidesdetail } from "@/https/api";
-import { GetServerSideProps } from "next";
+import { movies } from "@/types";
+import { NextPage } from "next";
 
-const API = "?api_key=3ac20e37c3b1bdd32dadec03d228864f";
-const pid = ({ onaddtocart, data }: any) => {
+
+type pidprops = {
+  data: movies
+  onaddtocart: (data: movies) => void
+
+}
+
+const pid: NextPage<pidprops> = ({ onaddtocart, data }) => {
   console.log(data);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -24,9 +28,11 @@ const pid = ({ onaddtocart, data }: any) => {
     <>
       <Head>
         <title>{data.title}</title>
+        <meta property="og:image" content={posturl(data.backdrop_path)}></meta>
+
+        
       </Head>
       <div className={styles.main}>
-        <h1 style={{ color: "red" }}> this is tranding{data.title} </h1>
         <Image
           className="imagesmovies"
           height={260}
@@ -38,6 +44,8 @@ const pid = ({ onaddtocart, data }: any) => {
             shimmer(700, 475)
           )}`}
         ></Image>
+        <h1 style={{ color: "red" }}> this is tranding{data.title} </h1>
+
 
         <button
           onClick={() => onaddtocart(data)}
@@ -46,7 +54,7 @@ const pid = ({ onaddtocart, data }: any) => {
             padding: "4px",
             border: "none",
             color: "white",
-            cursor:'pointer'
+            cursor: "pointer",
           }}
         >
           + watchlist
@@ -56,9 +64,7 @@ const pid = ({ onaddtocart, data }: any) => {
   );
 };
 
-export const getServerSideProps = async (context: {
-  params: any;
-}) => {
+export const getServerSideProps = async (context: { params: any }) => {
   const { params } = context;
   const pid = params.pid;
   const response = await getmovidesdetail(pid);
@@ -69,5 +75,4 @@ export const getServerSideProps = async (context: {
     },
   };
 };
-
 export default withcart(pid);

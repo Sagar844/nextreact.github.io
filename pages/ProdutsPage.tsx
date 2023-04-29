@@ -6,10 +6,11 @@ type Produstprops = {
 };
 
 const ProdutsPage = ({ movies }: Produstprops) => {
-  if(!movies) return <div>Loading...</div>
-    
+  if (!movies) return <div>Loading...</div>;
+
   return (
     <>
+      <h1 style={{color:'green'}}>Tranding</h1>
       <div className="grids">
         {movies.map((m) => {
           return (
